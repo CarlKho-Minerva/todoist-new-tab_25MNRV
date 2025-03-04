@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "Replace new tab page with Todoist",
   "permissions": ["storage"],
+  "host_permissions": ["https://todoist.com/*"],
   "chrome_url_overrides": {
     "newtab": "newtab.html"
   },
@@ -12,5 +13,8 @@
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "options_page": "options.html"
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.js"
+  }
 }

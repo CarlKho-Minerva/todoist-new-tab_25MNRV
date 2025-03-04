@@ -26,10 +26,32 @@ iframe {
   height: 100%;
   background-color: #fff;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-size: 20px;
   color: #e44332;
+  z-index: 1000;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid rgba(228, 67, 50, 0.3);
+  border-top-color: #e44332;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+.loading-message {
+  font-size: 14px;
+  color: #777;
+  margin-top: 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 .hidden {
@@ -91,4 +113,106 @@ iframe {
 .task label {
   flex-grow: 1;
   cursor: pointer;
+}
+
+.task-header {
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e44332;
+  padding-bottom: 10px;
+}
+
+.due-date {
+  font-size: 12px;
+  color: #777;
+  padding: 3px 8px;
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 30px;
+  color: #777;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  body.system-dark {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+  }
+  
+  body.system-dark #loading {
+    background-color: #1f1f1f;
+    color: #ff6b6b;
+  }
+  
+  body.system-dark .spinner {
+    border-color: rgba(255, 107, 107, 0.3);
+    border-top-color: #ff6b6b;
+  }
+  
+  body.system-dark #error {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+  }
+  
+  body.system-dark #error h1 {
+    color: #ff6b6b;
+  }
+  
+  body.system-dark .loading-message {
+    color: #aaa;
+  }
+}
+
+/* Class-based dark mode (for user preference) */
+body.dark-theme {
+  background-color: #1f1f1f;
+  color: #e0e0e0;
+}
+
+body.dark-theme #loading {
+  background-color: #1f1f1f;
+  color: #ff6b6b;
+}
+
+body.dark-theme .spinner {
+  border-color: rgba(255, 107, 107, 0.3);
+  border-top-color: #ff6b6b;
+}
+
+body.dark-theme #error {
+  background-color: #1f1f1f;
+  color: #e0e0e0;
+}
+
+body.dark-theme #error h1 {
+  color: #ff6b6b;
+}
+
+body.dark-theme .loading-message {
+  color: #aaa;
+}
+
+/* Dark theme for API implementation */
+.dark-theme .task-list {
+  color: #e0e0e0;
+}
+
+.dark-theme .task {
+  border-bottom-color: #333;
+}
+
+.dark-theme .task-header {
+  border-bottom-color: #ff6b6b;
+}
+
+.dark-theme .due-date {
+  background-color: #333;
+  color: #ccc;
+}
+
+.dark-theme .empty-state {
+  color: #aaa;
 }
